@@ -3,7 +3,6 @@ package consumer
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"log"
 
 	"github.com/redis/go-redis/v9"
@@ -27,6 +26,6 @@ func StartConsumer(client *redis.Client) {
 			log.Println("Error decodificando:", err)
 			continue
 		}
-		fmt.Printf("Recibido: %+v\n", reading)
+		HandleReading(reading) // centraliza la lógica de evento
 	}
 }
